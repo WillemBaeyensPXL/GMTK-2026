@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private List<Vector3> _pastPostitions = new List<Vector3>();
 
+    private Vector2 _oldPos;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
         {
             _pastPostitions.Add(transform.position);
         }
+
+        _oldPos = Vector2.zero;
     }
 
     // Update is called once per frame
@@ -35,8 +39,16 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_movement == Vector2.zero) return;
+
         Vector2 movement = _movement * Time.fixedDeltaTime * movementSpeed;
         _rb.MovePosition(_rb.position + movement);
+        Vector2 newPos = _rb.position;
+        if( (newPos - _oldPos).sqrMagnitude <= 0.00001)
+        {
+            return;
+        }
+
+        _oldPos = newPos;
 
         if (_pastPostitions[^1] == transform.position) return;
 
@@ -65,15 +77,17 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Crew collision");
             var follower = collision.gameObject.GetComponent<CrewFollower>();
-            if(_crewFollowers.Count == 0)
-            {
-                follower.Target = transform;
-            }
-            else
-            {
-                follower.Target = _crewFollowers[_crewFollowers.Count - 1].gameObject.transform;
-            }
+            collision.isTrigger = false;
+            collision.gameObject.layer = LayerMask.NameToLayer("Crew");
             _crewFollowers.Add(follower);
         }
+    }
+
+    private void LateUpdate()
+    {
+        Vector3 position = transform.position;
+        position.x = MathF.Round(position.x * 32f) / 32f;
+        position.y = MathF.Round(position.y * 32f) / 32f;
+        transform.position = position;
     }
 }
