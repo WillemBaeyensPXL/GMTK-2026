@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4077558102148938407}
   - component: {fileID: 3875008556707660979}
   - component: {fileID: 7466679864271567056}
+  - component: {fileID: 3277431924409372670}
   m_Layer: 0
-  m_Name: Nemo
+  m_Name: Haddock
   m_TagString: Crew
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,6 +120,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3277431924409372670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867611791518449921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1a88b5b6d7c6746adeab66cd5780bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4822427169761000007
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +206,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 101917101b29b7b46962890c9c8f0ecb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4d14b26639f45d4fa3bb32ce7ceb3b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4077558102148938407}
   - component: {fileID: 3875008556707660979}
   - component: {fileID: 7466679864271567056}
-  - component: {fileID: 4422452330126085935}
   m_Layer: 0
   m_Name: Davy
   m_TagString: Crew
@@ -120,18 +119,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4422452330126085935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867611791518449921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1a88b5b6d7c6746adeab66cd5780bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4822427169761000007
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +193,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 1164860124, guid: 813ab4e166582944f87dcccdb772b0ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82de1f8d628e8224b8e17a1aed80e9cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -227,7 +214,7 @@ Animator:
   m_GameObject: {fileID: 4822427169761000007}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e9713be6795744249975e991fca64c51, type: 2}
+  m_Controller: {fileID: 9100000, guid: 86423e7cf4eeb9b44b36748390362a83, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
