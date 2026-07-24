@@ -7,13 +7,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 10;
+    [SerializeField] 
+    private float movementSpeed = 10;
+
     private Vector2 _movement;
     private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
 
     private List<CrewFollower> _crewFollowers = new List<CrewFollower>();
 
-    private List<Vector3> _pastPostitions = new List<Vector3>();
+    private static int waypointAmount = 35;
+
+    private static int waypointsBetweenCrew = waypointAmount / 5;
+
+    private List<Vector3> _pastPostitions = new List<Vector3>(new Vector3[waypointAmount]);
 
     private Vector2 _oldPos;
 
@@ -21,13 +28,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = this.GetComponent<Rigidbody2D>();
+        _sr = gameObject.GetComponentInChildren<SpriteRenderer>();
 
-        for(int i = 0;i<60;++i)
+        for (int i = 0;i<waypointAmount;++i)
         {
-            _pastPostitions.Add(transform.position);
+            _pastPostitions[i] = transform.position;
         }
 
-        _oldPos = Vector2.zero;
     }
 
     // Update is called once per frame
@@ -52,16 +59,17 @@ public class PlayerController : MonoBehaviour
 
         if (_pastPostitions[^1] == transform.position) return;
 
-        for (int i = 0; i < _pastPostitions.Count - 1; ++i)
+        for (int i = 0; i < _pastPostitions.Count - 1; i++)
         {
             _pastPostitions[i] = _pastPostitions[i+1];
         }
 
-        _pastPostitions[_pastPostitions.Count - 1] = transform.position;
+        _pastPostitions[^1] = transform.position;
 
-        for(int i=0;i<_crewFollowers.Count;i++)
+        for(int i = 0 ; i<_crewFollowers.Count ; i++)
         {
-            _crewFollowers[i].transform.position = _pastPostitions[51-i*8];
+            int index = waypointAmount - waypointsBetweenCrew * (i+1);
+            _crewFollowers[i].transform.position = _pastPostitions[index];
             _crewFollowers[i].AlignToGrid();
         }
     }
@@ -69,13 +77,20 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue value)
     {
         _movement = value.Get<Vector2>();
+        if(_movement.x > 0)
+        {
+            _sr.flipX = false;
+        }
+        else if(_movement.x < 0)
+        {
+            _sr.flipX = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Crew"))
         {
-            Debug.Log("Crew collision");
             var follower = collision.gameObject.GetComponent<CrewFollower>();
             collision.isTrigger = false;
             collision.gameObject.layer = LayerMask.NameToLayer("Crew");
@@ -83,11 +98,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        Vector3 position = transform.position;
-        position.x = MathF.Round(position.x * 32f) / 32f;
-        position.y = MathF.Round(position.y * 32f) / 32f;
-        transform.position = position;
-    }
 }
