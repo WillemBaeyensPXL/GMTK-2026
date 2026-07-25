@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Oxygen : MonoBehaviour
 {
@@ -34,10 +35,25 @@ public class Oxygen : MonoBehaviour
             _timer -= _secondsPerPercentage;
             _currentOxygen -= 1;
             _oxygenMeterText.text = _currentOxygen.ToString("") + "%";
-            
-            if(_currentOxygen <= 0)
+
+            if(_currentOxygen < 50 )
             {
-                Debug.Log("Out of oxygen, you die!");    
+                _oxygenMeterText.color = Color.yellow;
+            }
+
+            if (_currentOxygen < 20)
+            {
+                _oxygenMeterText.color = Color.red;
+            }
+
+
+
+            if (_currentOxygen <= 0)
+            {
+                //some sound effect
+                //collapse animtion? 
+                //
+                SceneManager.LoadScene("GameOver");  
             }
         }
     }

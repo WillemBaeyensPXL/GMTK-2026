@@ -112,6 +112,11 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.layer = LayerMask.NameToLayer("Crew");
             _crewFollowers.Add(follower);
         }
+
+        else if(collision.CompareTag("Escape"))
+        {
+            collision.gameObject.GetComponent<EscapePad>().StartEscape();
+        }
     }
 
 }
