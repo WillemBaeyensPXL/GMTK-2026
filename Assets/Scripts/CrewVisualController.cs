@@ -1,37 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class CrewVisualController : MonoBehaviour
 {
-    private SpriteRenderer _renderer;
+    protected SpriteRenderer _sr;
+    protected Animator _animator;
 
-    private float _oldX;
+    public Vector2 movement;
+
+    public bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        _renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        _sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+        _animator = gameObject.GetComponentInChildren<Animator>();
 
-        _oldX = transform.position.x;
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void Update()
     {
-        float newX = transform.position.x;
-        if(Mathf.Abs(newX-_oldX) > 0.0001)
-        {
-            if(newX > _oldX)
-            {
-                _renderer.flipX = false;
-            }
-            else if(newX < _oldX)
-            {
-                _renderer.flipX = true;
-            }
-        }
+        UpdateAnimator();
+    }
 
-        _oldX = newX;
+    protected virtual void UpdateAnimator()
+    {
+        _animator.SetBool("IsMoving", isMoving);
+
+        if (movement.x != 0)
+        {
+            _sr.flipX = movement.x < 0;
+        }
     }
 }
