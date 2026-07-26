@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4077558102148938407}
   - component: {fileID: 3875008556707660979}
   - component: {fileID: 7466679864271567056}
-  - component: {fileID: 9164228071824568999}
+  - component: {fileID: 4571457630884174283}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Crew
@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f5dab0aa0624b4694cd73a346042f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0}
+  isMoving: 0
 --- !u!50 &7466679864271567056
 Rigidbody2D:
   serializedVersion: 4
@@ -120,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &9164228071824568999
+--- !u!114 &4571457630884174283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,9 +131,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867611791518449921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1a88b5b6d7c6746adeab66cd5780bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 33f319c622861154480abd5006e9adf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0}
+  isMoving: 0
 --- !u!1 &4822427169761000007
 GameObject:
   m_ObjectHideFlags: 0

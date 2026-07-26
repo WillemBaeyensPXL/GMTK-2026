@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -111,6 +112,7 @@ public class PlayerController : MonoBehaviour
             collision.isTrigger = false;
             collision.gameObject.layer = LayerMask.NameToLayer("Crew");
             _crewFollowers.Add(follower);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.SoundEffects.CrewCollected);
         }
 
         else if(collision.CompareTag("Escape"))

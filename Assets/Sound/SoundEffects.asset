@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17dc50d42f639f48a662519dc9ba925, type: 3}
+  m_Name: SoundEffects
+  m_EditorClassIdentifier: 
+  PlayerFootsteps:
+  - {fileID: 8300000, guid: ad4b59ddddf35844285327ea34a8f9cf, type: 3}
+  - {fileID: 8300000, guid: 13f78fef8dee7404da59094ed15f390e, type: 3}
+  - {fileID: 8300000, guid: a6ece2d2a741f3a4a95a8cdb7ec969b3, type: 3}
+  - {fileID: 8300000, guid: d813e816622781b4cab90ce491eceb6d, type: 3}
+  - {fileID: 8300000, guid: 087d615c8950162479cfb05de72c074a, type: 3}
