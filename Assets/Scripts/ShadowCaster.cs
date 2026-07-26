@@ -1,8 +1,10 @@
+using System;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 
 
@@ -41,6 +43,9 @@ public class ShadowCaster2DCreator : MonoBehaviour
             Vector3[] testPath = new Vector3[pathVertices.Length];
             for (int j = 0; j < pathVertices.Length; j++)
             {
+                Vector2 vertex = pathVertices[j];
+                vertex.x = MathF.Round(vertex.x * 32f) / 32f;
+                vertex.y = MathF.Round(vertex.y * 32f) / 32f;
                 testPath[j] = pathVertices[j];
             }
 

@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a6ece2d2a741f3a4a95a8cdb7ec969b3, type: 3}
   - {fileID: 8300000, guid: d813e816622781b4cab90ce491eceb6d, type: 3}
   - {fileID: 8300000, guid: 087d615c8950162479cfb05de72c074a, type: 3}
+  CrewCollected: {fileID: 8300000, guid: 0343b122dbf693e45a1b44d00d52e881, type: 3}
+  MonsterAggro: {fileID: 8300000, guid: f10e6baaabc9a6c47884c22872f78ae5, type: 3}

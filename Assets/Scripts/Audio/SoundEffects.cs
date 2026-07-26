@@ -8,4 +8,7 @@ public class SoundEffects : ScriptableObject
 
     [Header("Crew")]
     public AudioClip CrewCollected;
+
+    [Header("Tiny Tim")]
+    public AudioClip MonsterAggro;
 }

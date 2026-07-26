@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     private float movementSpeed = 10;
 
+    [SerializeField]
+    private TinyTim tinyTim;
+
     private Vector2 _movement;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
@@ -26,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 _oldPos;
 
     private Animator _animator;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -106,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Crew"))
+        if (collision.CompareTag("Crew"))
         {
             var follower = collision.gameObject.GetComponent<CrewFollower>();
             collision.isTrigger = false;
@@ -115,10 +120,36 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.PlaySFX(SoundManager.Instance.SoundEffects.CrewCollected);
         }
 
-        else if(collision.CompareTag("Escape"))
+        else if (collision.CompareTag("Escape"))
         {
             collision.gameObject.GetComponent<EscapePad>().StartEscape();
         }
+
+        else if (collision.CompareTag("TinyTimAggro"))
+        {
+            GameObject tinyTimTarget = null;
+            if (_crewFollowers.Count == 0)
+            {
+                tinyTimTarget = this.gameObject;
+            }
+            else
+            {
+                tinyTimTarget = _crewFollowers[^1].gameObject;
+            }
+            tinyTim.StartAggro(tinyTimTarget);
+        }
+        else if (collision.CompareTag("TinyTim"))
+        {
+
+        }
     }
+
+    private void OnTinyTimAttack()
+    {
+        //Play crew death sfx
+
+
+    }
+    
 
 }
